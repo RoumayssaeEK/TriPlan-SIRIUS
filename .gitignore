@@ -1,0 +1,41 @@
+
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.jks
+id_rsa*
+vault-keys*
+vault-init*
+*.secret
+secrets/
+
+# --- Java / Spring Boot ---
+target/
+build/
+*.class
+*.jar
+.gradle/
+
+# --- Python / FastAPI ---
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# --- Node / front ---
+node_modules/
+dist/
+
+
+# --- OPNsense 
+config.xml
+
+# --- IDE et système ---
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db

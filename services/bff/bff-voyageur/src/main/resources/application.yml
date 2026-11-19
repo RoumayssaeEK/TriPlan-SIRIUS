@@ -1,0 +1,22 @@
+server:
+  port: ${SERVER_PORT:8201}
+
+spring:
+  application:
+    name: bff-voyageur
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+
+services:
+  profil:      ${PROFIL_URL:http://10.0.20.100:8101}
+  voyage:      ${VOYAGE_URL:http://10.0.20.100:8102}
+  hebergement: ${HEBERGEMENT_URL:http://10.0.20.100:8103}
+  activites:   ${ACTIVITES_URL:http://10.0.20.100:8104}
+  transport:   ${TRANSPORT_URL:http://10.0.20.100:8105}
+  itineraire:  ${ITINERAIRE_URL:http://10.0.20.101:8106}
+  budget:      ${BUDGET_URL:http://10.0.20.101:8107}

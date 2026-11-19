@@ -1,0 +1,19 @@
+name: CI infra
+
+on:
+  pull_request:
+    paths:
+      - "infra/**"
+  push:
+    branches: [main]
+    paths:
+      - "infra/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+      - name: Test de départ
+        run: echo "CI infra OK"

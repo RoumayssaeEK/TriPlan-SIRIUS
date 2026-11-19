@@ -1,0 +1,19 @@
+name: CI services
+
+on:
+  pull_request:
+    paths:
+      - "services/**"
+  push:
+    branches: [main]
+    paths:
+      - "services/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+      - name: Test de départ
+        run: echo "CI services OK"

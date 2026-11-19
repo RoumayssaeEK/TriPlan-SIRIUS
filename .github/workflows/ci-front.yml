@@ -1,0 +1,19 @@
+name: CI front
+
+on:
+  pull_request:
+    paths:
+      - "front/**"
+  push:
+    branches: [main]
+    paths:
+      - "front/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+      - name: Test de départ
+        run: echo "CI front OK"

@@ -1,0 +1,14 @@
+
+services:
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: rabbitmq
+    hostname: tpl-mq01
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: mqadmin
+      RABBITMQ_DEFAULT_PASS: ${MQ_ADMIN_PASSWORD}
+      RABBITMQ_DEFAULT_VHOST: triplan
+    ports:
+      - "10.0.30.12:5671:5671"
+      - "10.0.30.12:15672:15672"

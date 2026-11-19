@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: bff-voyageur
+              uri: ${BFF_VOYAGEUR_URL:http://10.0.20.102:8201}
+              predicates:
+                - Path=/api/voyageur/**
+            - id: bff-voyagiste
+              uri: ${BFF_VOYAGISTE_URL:http://10.0.20.102:8202}
+              predicates:
+                - Path=/api/voyagiste/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

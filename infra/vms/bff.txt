@@ -1,0 +1,8 @@
+# hostname: bff
+# ip -br -4 a
+ens160           UP             10.0.20.102/24 
+# ip route
+default via 10.0.20.1 dev ens160 proto static 
+10.0.20.0/24 dev ens160 proto kernel scope link src 10.0.20.102 
+#### /etc/netplan/01-triplan.yaml
+(lecture root)

@@ -1,0 +1,34 @@
+
+# VM : API Gateway
+# hostname: triplan-api-gateway
+
+# ip -br -4 addr
+ens160           UP             172.31.252.110/21
+ens192           UP             10.0.10.12/24
+
+# ip route
+default via 172.31.251.249 dev ens160 proto dhcp
+10.0.10.0/24 dev ens192 proto kernel scope link src 10.0.10.12
+10.0.20.0/24 via 10.0.10.1 dev ens192 proto static
+10.0.30.0/24 via 10.0.10.1 dev ens192 proto static
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
+172.18.0.0/16 dev br-9cba61af660b proto kernel scope link src 172.18.0.1
+172.31.248.0/21 dev ens160 proto kernel scope link src 172.31.252.110
+172.31.251.249 dev ens160 proto dhcp scope link src 172.31.252.110
+
+#### /etc/netplan/01-triplan.yaml
+
+network:
+  version: 2
+  ethernets:
+    ens160:
+      dhcp4: true
+    ens192:
+      dhcp4: false
+      addresses:
+        - 10.0.10.12/24
+      routes:
+        - to: 10.0.20.0/24
+          via: 10.0.10.1
+        - to: 10.0.30.0/24
+          via: 10.0.10.1
